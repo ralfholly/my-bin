@@ -1,0 +1,2 @@
+#!/bin/bash
+menucmd.py git difftool "$@" -y -- $(git status --porcelain | cut -c 4-)

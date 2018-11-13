@@ -1,0 +1,3 @@
+#!/bin/bash
+
+grep '\[pruned\]' | sed -r -e /\[pruned\]/s,^[^/]+/,,

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+###################################
+# Note! This script should be 'sourced' otherwise
+# the changes made to environment variables are
+# lost.
+
+# If only a refresh is desired.
+#if [ $# -eq 1 ] && [ "$1" = "--refresh" ]; then
+if [ $# -eq 0 ] && [ -n "$CSCOPE_DIRS" ]; then
+    echo Reusing $CSCOPE_DIRS
+    # Reuse existing directories, just refresh.
+    :
+else
+    export CSCOPE_DIRS='./'
+    if [ $# -ne 0 ]; then CSCOPE_DIRS="$@"; fi
+fi
+
+# Find source code in all cscope directories.
+echo Cscope dirs: "$CSCOPE_DIRS"
+
+find_source $CSCOPE_DIRS > cscope.files
+
+# Build cscope database.
+cscope -b -i cscope.files
+

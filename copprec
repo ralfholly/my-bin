@@ -1,0 +1,20 @@
+#!/bin/sh
+
+echo
+echo "L->R    () [] . -> i++ i--"
+echo "R->L    * & + - ! ~ ++i --i (cast) sizeof"
+echo "L->R    * / %"
+echo "L->R    + -"
+echo "L->R    >> <<"
+echo "L->R    < > <= >="
+echo "L->R    == !="
+echo "L->R    &"
+echo "L->R    ^"
+echo "L->R    |"
+echo "L->R    &&"
+echo "L->R    ||"
+echo "R->L    ?:"
+echo "R->L    = += -= *= /= %= >>= <<= &= ^= |="
+echo "L->R    ,"
+echo
+

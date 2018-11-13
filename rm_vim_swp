@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+_rand=$RANDOM
+_swap_list=/tmp/swap_files_list.$_rand
+_swap_dir=/tmp/swap_files.$_rand
+
+find -iname "*.sw?" | tee $_swap_list
+
+if [ ! -s $_swap_list ]; then
+    rm $_swap_list
+    exit
+fi
+
+mkdir -p $_swap_dir
+cp --parents -t $_swap_dir $(<$_swap_list)
+rm -rf $(<$_swap_list)
+

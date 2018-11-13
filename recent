@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#
+# recent -- List files in given directory in modification time order.
+#
+
+# Search in current directory, if no dir provided as first argument.
+search_dir=${1:-.}
+
+# Use GNU extension '%T+' to get time in (kind-of) ISO format, which is nicer than '%T@'.
+find "$search_dir" -type f -printf '%T+ %p\n' | sort -n # | CUT -f2- -d" "

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+GIT_CHANGES_FILE=~/tmp/gitchanges
+
+dirs=()
+verbose=0
+
+for arg in "$@"; do
+    if [ "$arg" == "-v" ]; then
+        verbose=1
+    else
+        dirs[${#dirs[@]}]="$arg"
+    fi
+done
+
+command="git status --porcelain ${dirs[@]} | grep -E '^ ?(!|A|M|C|D|R)'"
+
+if [ $verbose -eq 1 ]; then
+    eval "$command" | tee "$GIT_CHANGES_FILE"
+else
+    eval "$command" | cut -c 4- | tee "$GIT_CHANGES_FILE"
+fi

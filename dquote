@@ -1,0 +1,12 @@
+#!/bin/sh
+
+###
+# Surrounds given input with double quotes (or any other string that is given as a first parameter)
+#
+
+q_=${1:-\"}
+
+while read line_; do
+    echo $q_${line_}$q_
+done
+

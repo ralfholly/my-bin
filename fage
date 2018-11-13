@@ -1,0 +1,12 @@
+#!/bin/bash
+
+###
+# Displays the file age for all filenames received via standard input.
+#
+
+CURRTIME_=$(date +%s)
+while read FILE_; do
+    MTIME_=$(stat --printf "%Y\n" "$FILE_")
+    AGE_=$(((CURRTIME_ - MTIME_) / 3600 / 24))
+    printf "%6d\t%s\n" $AGE_ $FILE_
+done

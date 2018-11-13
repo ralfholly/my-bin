@@ -1,0 +1,4 @@
+#!/bin/bash
+. vimide.sh
+vim . ${VIMIDE_VIM_ARGS[@]}
+
