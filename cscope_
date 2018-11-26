@@ -19,7 +19,7 @@ fi
 # Find source code in all cscope directories.
 echo Cscope dirs: "$CSCOPE_DIRS"
 
-find_source $CSCOPE_DIRS > cscope.files
+ack --cc --hh --cpp -f $CSCOPE_DIRS > cscope.files
 
 # Build cscope database.
 cscope -b -i cscope.files
